@@ -2,6 +2,7 @@
 
 import { HomeHero } from './hero';
 import { HomeLatestPosts } from './latest-posts';
+import { HomeAnnouncements } from './announcements';
 
 // ----------------------------------------------------------------------
 
@@ -10,6 +11,7 @@ export function HomeView() {
     <>
       <HomeHero />
       <HomeLatestPosts />
+      <HomeAnnouncements />
     </>
   );
 }

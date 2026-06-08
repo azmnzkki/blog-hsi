@@ -33,11 +33,16 @@ const MOCK_USERS = [
 const AUTH_STORAGE_KEY = 'hsi_mock_auth_user';
 const DEFAULT_USER_ID = 'user-1';
 
+// SSR guard: localStorage only available in browser
+const isBrowser = () => typeof window !== 'undefined';
+
 /**
  * Get current authenticated user from localStorage
  * If no user is stored, default to first mock user (Imam Fauzi)
  */
 export function getMockAuthUser() {
+  if (!isBrowser()) return null;
+
   try {
     const stored = localStorage.getItem(AUTH_STORAGE_KEY);
     if (stored) {
@@ -59,6 +64,8 @@ export function getMockAuthUser() {
  * Set mock auth user
  */
 export function setMockAuthUser(userId) {
+  if (!isBrowser()) return null;
+
   const user = MOCK_USERS.find((u) => u.id === userId);
   if (user) {
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
@@ -71,6 +78,7 @@ export function setMockAuthUser(userId) {
  * Clear mock auth session
  */
 export function clearMockAuthSession() {
+  if (!isBrowser()) return;
   localStorage.removeItem(AUTH_STORAGE_KEY);
 }
 
@@ -83,8 +91,9 @@ export function getMockUsers() {
 
 /**
  * Check if user is authenticated (mock version)
+ * Fixed: was isMockAuthenticateд() — had a Cyrillic "д" typo
  */
-export function isMockAuthenticateд() {
+export function isMockAuthenticated() {
   const user = getMockAuthUser();
   return !!user;
 }

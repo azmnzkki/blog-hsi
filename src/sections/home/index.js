@@ -3,3 +3,4 @@ export * from './hero';
 export * from './latest-posts';
 export * from './home-featured-post';
 export * from './home-post-card';
+export * from './announcements';

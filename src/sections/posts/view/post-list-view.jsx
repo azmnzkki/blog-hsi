@@ -99,8 +99,8 @@ export function PostListView() {
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
       {/* Header */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, mb: 0.5 }}>
+      <Box sx={{ mb: { xs: 4, md: 5 } }}>
+        <Typography variant="h3" sx={{ fontWeight: 700, mb: 1.5 }}>
           Semua Artikel & Berita
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -112,7 +112,7 @@ export function PostListView() {
       <Tabs
         value={category}
         onChange={handleTabChange}
-        sx={{ mb: 3, borderBottom: 1, borderColor: 'divider' }}
+        sx={{ mb: 4, borderBottom: 1, borderColor: 'divider' }}
       >
         {TABS.map((t) => (
           <Tab key={t.value} value={t.value} label={t.label} />
@@ -123,7 +123,7 @@ export function PostListView() {
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         spacing={2}
-        alignItems="center"
+        alignItems={{ xs: 'flex-start', sm: 'center' }}
         sx={{ mb: 4 }}
       >
         <TextField
@@ -154,7 +154,7 @@ export function PostListView() {
       </Stack>
 
       {/* Result count */}
-      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
+      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4 }}>
         Menampilkan <strong>{filtered.length}</strong> artikel
       </Typography>
 

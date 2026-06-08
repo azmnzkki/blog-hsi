@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Box from '@mui/material/Box';
@@ -23,18 +23,23 @@ import { navDataHSI } from '../nav-config-hsi';
 export function DashboardHSILayout({ children, slotProps: slotPropsProp }) {
   const router = useRouter();
 
-  // Get current mock auth user
-  const currentUser = useMemo(() => getMockAuthUser(), []);
+  // Use state to avoid SSR mismatch (localStorage only available client-side)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isChecking, setIsChecking] = useState(true);
 
-  // Auth guard: redirect to login if no user
-  useMemo(() => {
-    if (!currentUser) {
+  useEffect(() => {
+    const user = getMockAuthUser();
+    setCurrentUser(user);
+    setIsChecking(false);
+
+    // Auth guard: redirect to login if no user
+    if (!user) {
       router.push('/auth/jwt/sign-in');
     }
-  }, [currentUser, router]);
+  }, [router]);
 
-  if (!currentUser) {
-    return null; // Will redirect
+  if (isChecking || !currentUser) {
+    return null;
   }
 
   // Merge HSI nav config with existing slotProps

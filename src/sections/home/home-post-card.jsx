@@ -32,12 +32,14 @@ export function HomePostCard({ post }) {
         height: 1,
         display: 'flex',
         flexDirection: 'column',
-        '&:hover': { boxShadow: (theme) => theme.shadows[8] },
-        transition: 'box-shadow 0.3s',
+        '&:hover': {
+          boxShadow: (theme) => theme.shadows[8],
+          transition: 'box-shadow 0.3s',
+        },
       }}
     >
       {/* Image */}
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', overflow: 'hidden' }}>
         <Image alt={post.title} src={post.coverUrl} ratio="16/9" />
         <Box sx={{ position: 'absolute', top: 12, left: 12 }}>
           <Label color={cat.color} variant="filled">
@@ -48,7 +50,7 @@ export function HomePostCard({ post }) {
 
       {/* Content */}
       <CardContent
-        sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1, p: 2.5 }}
+        sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1.5, p: 2.5 }}
       >
         <Link
           component={RouterLink}
@@ -90,12 +92,12 @@ export function HomePostCard({ post }) {
           direction="row"
           spacing={1}
           alignItems="center"
-          sx={{ pt: 1, borderTop: '1px solid', borderColor: 'divider' }}
+          sx={{ pt: 1.5, borderTop: '1px solid', borderColor: 'divider', mt: 'auto' }}
         >
           <Avatar
             src={post.author?.avatarUrl}
             alt={post.author?.name}
-            sx={{ width: 24, height: 24 }}
+            sx={{ width: 28, height: 28 }}
           />
           <Typography variant="caption" sx={{ color: 'text.secondary' }} noWrap>
             {post.author?.name}

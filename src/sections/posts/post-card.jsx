@@ -39,7 +39,7 @@ export function PostCard({ post }) {
       }}
     >
       {/* Image */}
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', overflow: 'hidden' }}>
         <Image alt={post.title} src={post.coverUrl} ratio="16/9" />
         <Box sx={{ position: 'absolute', top: 12, left: 12 }}>
           <Label color={cat.color} variant="filled">
@@ -49,7 +49,7 @@ export function PostCard({ post }) {
       </Box>
 
       {/* Content */}
-      <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1, p: 2.5 }}>
+      <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1.5, p: 2.5 }}>
         <Link
           component={RouterLink}
           href={`/posts/${post.slug}`}
@@ -90,17 +90,17 @@ export function PostCard({ post }) {
           direction="row"
           alignItems="center"
           spacing={1}
-          sx={{ pt: 1.5, borderTop: '1px solid', borderColor: 'divider' }}
+          sx={{ pt: 1.5, borderTop: '1px solid', borderColor: 'divider', mt: 'auto' }}
         >
           <Avatar
             src={post.author?.avatarUrl}
             alt={post.author?.name}
-            sx={{ width: 24, height: 24 }}
+            sx={{ width: 28, height: 28 }}
           />
           <Typography variant="caption" sx={{ color: 'text.secondary', flex: 1 }} noWrap>
             {post.author?.name}
           </Typography>
-          <Stack direction="row" spacing={0.5} alignItems="center">
+          <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
             <Iconify icon="solar:eye-bold" width={14} sx={{ color: 'text.disabled' }} />
             <Typography variant="caption" sx={{ color: 'text.disabled' }}>
               {fShortenNumber(post.totalViews)}
@@ -108,7 +108,7 @@ export function PostCard({ post }) {
           </Stack>
         </Stack>
 
-        <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+        <Typography variant="caption" sx={{ color: 'text.disabled', fontSize: '0.7rem' }}>
           {fDate(post.publishedAt)}
         </Typography>
       </CardContent>

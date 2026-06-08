@@ -105,7 +105,7 @@ export function HomeLatestPosts() {
               </Box>
             )}
 
-            {/* Grid Posts */}
+            {/* Grid Posts - 3 columns */}
             {gridPosts.length > 0 && (
               <Grid container spacing={3}>
                 {gridPosts.map((post) => (

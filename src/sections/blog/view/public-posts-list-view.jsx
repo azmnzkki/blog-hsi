@@ -49,16 +49,16 @@ export function PublicPostsListView() {
     <Container
       maxWidth="lg"
       sx={{
-        py: { xs: 4, md: 8 },
+        py: { xs: 5, md: 8 },
         minHeight: 'calc(100vh - 200px)',
       }}
     >
       {/* Header Section */}
-      <Box sx={{ mb: { xs: 4, md: 6 } }}>
+      <Box sx={{ mb: { xs: 4, md: 5 } }}>
         <Typography
           variant="h3"
           sx={{
-            mb: 2,
+            mb: 1.5,
             fontWeight: 700,
             color: 'text.primary',
           }}
@@ -66,7 +66,7 @@ export function PublicPostsListView() {
           {displayTitle}
         </Typography>
         <Typography
-          variant="body1"
+          variant="body2"
           sx={{
             color: 'text.secondary',
             maxWidth: 600,
@@ -81,7 +81,7 @@ export function PublicPostsListView() {
         direction={{ xs: 'column', sm: 'row' }}
         spacing={2}
         sx={{
-          mb: { xs: 3, md: 5 },
+          mb: { xs: 4, md: 5 },
           alignItems: { sm: 'flex-end' },
         }}
       >
@@ -95,7 +95,7 @@ export function PublicPostsListView() {
 
       {/* Posts Grid */}
       {posts.length > 0 ? (
-        <Grid container spacing={{ xs: 2, md: 3 }}>
+        <Grid container spacing={3}>
           {posts.map((post) => (
             <Grid key={post.id} item xs={12} sm={6} md={4}>
               <PostItem
@@ -111,7 +111,7 @@ export function PublicPostsListView() {
         <Box
           sx={{
             textAlign: 'center',
-            py: 8,
+            py: 10,
           }}
         >
           <Typography variant="h6" sx={{ color: 'text.secondary', mb: 2 }}>
