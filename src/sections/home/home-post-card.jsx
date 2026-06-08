@@ -10,10 +10,8 @@ import CardContent from '@mui/material/CardContent';
 
 import { RouterLink } from 'src/routes/components';
 import { fDate } from 'src/utils/format-time';
-import { fShortenNumber } from 'src/utils/format-number';
 import { Label } from 'src/components/label';
 import { Image } from 'src/components/image';
-import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -25,7 +23,7 @@ const CATEGORY_MAP = {
 
 // ----------------------------------------------------------------------
 
-export function PostCard({ post }) {
+export function HomePostCard({ post }) {
   const cat = CATEGORY_MAP[post.category] || CATEGORY_MAP.berita;
 
   return (
@@ -34,8 +32,8 @@ export function PostCard({ post }) {
         height: 1,
         display: 'flex',
         flexDirection: 'column',
-        transition: 'box-shadow 0.3s',
         '&:hover': { boxShadow: (theme) => theme.shadows[8] },
+        transition: 'box-shadow 0.3s',
       }}
     >
       {/* Image */}
@@ -49,12 +47,15 @@ export function PostCard({ post }) {
       </Box>
 
       {/* Content */}
-      <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1, p: 2.5 }}>
+      <CardContent
+        sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1, p: 2.5 }}
+      >
         <Link
           component={RouterLink}
           href={`/posts/${post.slug}`}
           color="inherit"
           underline="hover"
+          sx={{ flex: 1 }}
         >
           <Typography
             variant="subtitle1"
@@ -75,7 +76,6 @@ export function PostCard({ post }) {
           variant="body2"
           sx={{
             color: 'text.secondary',
-            flex: 1,
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
@@ -88,29 +88,23 @@ export function PostCard({ post }) {
         {/* Footer */}
         <Stack
           direction="row"
-          alignItems="center"
           spacing={1}
-          sx={{ pt: 1.5, borderTop: '1px solid', borderColor: 'divider' }}
+          alignItems="center"
+          sx={{ pt: 1, borderTop: '1px solid', borderColor: 'divider' }}
         >
           <Avatar
             src={post.author?.avatarUrl}
             alt={post.author?.name}
             sx={{ width: 24, height: 24 }}
           />
-          <Typography variant="caption" sx={{ color: 'text.secondary', flex: 1 }} noWrap>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }} noWrap>
             {post.author?.name}
           </Typography>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Iconify icon="solar:eye-bold" width={14} sx={{ color: 'text.disabled' }} />
-            <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-              {fShortenNumber(post.totalViews)}
-            </Typography>
-          </Stack>
+          <Box sx={{ flexGrow: 1 }} />
+          <Typography variant="caption" sx={{ color: 'text.disabled', flexShrink: 0 }}>
+            {fDate(post.publishedAt)}
+          </Typography>
         </Stack>
-
-        <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          {fDate(post.publishedAt)}
-        </Typography>
       </CardContent>
     </Card>
   );

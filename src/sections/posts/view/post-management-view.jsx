@@ -35,7 +35,7 @@ import { getMockAuthUser } from 'src/utils/mock-auth';
 
 import { POSTS } from 'src/_mock/_blog';
 
-import Iconify from 'src/components/iconify';
+import { Iconify } from 'src/components/iconify';
 import { EmptyContent } from 'src/components/empty-content';
 
 import { PostListCardSkeletons } from '../post-skeleton';

@@ -20,7 +20,7 @@ import DialogContent from '@mui/material/DialogContent';
 
 import { useRouter } from 'src/routes/hooks';
 
-import Iconify from 'src/components/iconify';
+import { Iconify } from 'src/components/iconify';
 import { Editor } from 'src/components/editor';
 import { toast } from 'src/components/snackbar';
 

@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 
 import { getMockAuthUser } from 'src/utils/mock-auth';
 
-import Iconify from 'src/components/iconify';
+import { Iconify } from 'src/components/iconify';
 import { toast } from 'src/components/snackbar';
 import { Form, Field } from 'src/components/hook-form';
 
